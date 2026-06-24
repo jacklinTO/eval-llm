@@ -1,19 +1,29 @@
+import json
 from deepeval import evaluate
 from deepeval.test_case import LLMTestCase
 from deepeval.metrics import AnswerRelevancyMetric
 
 def test_local_evaluation():
-    test_cases = [
-            LLMTestCase(
-            input="What is the capital of United Kingdom?",
-            actual_output="The capital of United Kingdom is London.",
-            retrieval_context=["London is the capital and most populous city of United Kingdom."]),
-            LLMTestCase(
-            input="What is the capital of Canada?",
-            actual_output="The capital of Canada is Toronto.",
-            expected_output="The capital of Canada is Ottawa.",
-            retrieval_context=["Ottawa is the capital and fourth populous city of Canada."]),
-    ]
+    test_cases = []
+    with open('capitals.json', 'r') as data_file:
+        data = json.load(data_file)
+    
+    for item in data.items():
+        input_value = item[1]["input"]
+        print(input_value)
+        actual_output_value = item[1]["actual_output"]
+        if "expected_output" in item[1]:
+            expected_output_value = item[1]["expected_output"]
+        else:
+            expected_output_value = ''
+        retrieval_context_value = item[1]["retrieval_context"]
+        test_case = LLMTestCase(
+            input=input_value,
+            actual_output=actual_output_value,
+            expected_output=expected_output_value,
+            retrieval_context=[retrieval_context_value],
+        )
+        test_cases.append(test_case)
     
     metric = AnswerRelevancyMetric(threshold=0.7)
     

@@ -1,0 +1,23 @@
+{
+	"United Kingdom": {
+		"input": "What is the capital of United Kingdom?",
+		"actual_output": "The capital of United Kingdom is London.",
+		"retrieval_context": "London is the capital and most populous city of United Kingdom."
+	},
+	"Canada": {
+		"input": "What is the capital of Canada?",
+		"actual_output": "The capital of Canada is Toronto.",
+		"expected_output": "The capital of Canada is Ottawa.",
+		"retrieval_context": "Ottawa is the capital and fourth populous city of Canada."
+	},
+	"Singapore": {
+		"input": "What is the capital of Singapore?",
+		"actual_output": "The capital of Singapore is Singapore.",
+		"retrieval_context": "Singapore is a city state and where the country itself serves as its own capital."
+	},
+	"Nauru": {
+		"input": "What is the capital of Nauru?",
+		"actual_output": "Nauru ddos not have an official capital city.",
+		"retrieval_context": "Nauru have no actual cities and therefore do not have a capital."
+	}
+}
